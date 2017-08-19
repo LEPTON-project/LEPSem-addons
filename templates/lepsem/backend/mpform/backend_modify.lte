@@ -81,10 +81,10 @@
 					<td class="single line" >{{ field.entrytype }}</td>
 					<td class="single line" >{{ field.multiselect_field }}</td>
 					<td class="single line">
-						<a {{ MUVE_UP_STYLE }} href="{{ MODULE_URL }}/move_to.php?page_id={{ PAGE_ID }}&amp;section_id={{ SECTION_ID }}&amp;field_id={{ field.FIELD_ID }}&amp;where=up" title="{{ TEXT_MOVE_UP }}"><i class="large olive caret up icon"></a>
+						<a href="{{ MODULE_URL }}/move_to.php?page_id={{ PAGE_ID }}&amp;section_id={{ SECTION_ID }}&amp;field_id={{ field.FIELD_ID }}&amp;where=up" title="{{ TEXT_MOVE_UP }}"><i class="large olive sort ascending icon"></a>
 					</td>
 					<td class="single line">
-						<a {{ MUVE_DOWN_STYLE }} href="{{ MODULE_URL }}/move_to.php?page_id={{ PAGE_ID }}&amp;section_id={{ SECTION_ID }}&amp;field_id={{ field.FIELD_ID }}&amp;where=down" title="{{ TEXT_MOVE_DOWN }}"><i class="large olive caret down icon"></a>
+						<a href="{{ MODULE_URL }}/move_to.php?page_id={{ PAGE_ID }}&amp;section_id={{ SECTION_ID }}&amp;field_id={{ field.FIELD_ID }}&amp;where=down" title="{{ TEXT_MOVE_DOWN }}"><i class="large olive sort descending icon"></a>
 					</td>
 					<td class="single line">
 						<a href="javascript:confirm_link('{{ TEXT_ARE_YOU_SURE }}','{{ MODULE_URL }}/delete_field.php?page_id={{ PAGE_ID }}&amp;section_id={{ SECTION_ID }}&amp;field_id={{ field.FIELD_ID }}');" title="{{ TEXT_DELETE }}"><i class="large red remove icon"></i></a>
