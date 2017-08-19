@@ -1,17 +1,15 @@
 <?php
-
 /**
- *  @template       LEPSem
- *  @version        see info.php of this template
- *  @author         cms-lab
- *  @copyright      2014-2017 cms-lab
- *  @license        GNU General Public License
- *  @license terms  see info.php of this template
- *  @platform       see info.php of this template
- *  @requirements   PHP 5.2.x and higher
+ *  @module         MPForm
+ *  @author         Frank Heyne, Dietrich Roland Pehlke, erpe
+ *  @license        http://www.gnu.org/licenses/gpl.htm
+ *  @platform       see info.php of this addon
+ *  @license terms  see info.php of this addon
+ *  @version        see info.php of this module
+ *
  */
-
-// include class.secure.php to protect this file and the whole CMS!
+ 
+ // include class.secure.php to protect this file and the whole CMS!
 if (defined('LEPTON_PATH')) {	
 	include(LEPTON_PATH.'/framework/class.secure.php'); 
 } else {
@@ -29,7 +27,5 @@ if (defined('LEPTON_PATH')) {
 	}
 }
 // end include class.secure.php
-
-
 
 ?>
