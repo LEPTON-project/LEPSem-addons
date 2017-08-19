@@ -23,7 +23,8 @@
 			<input type="hidden" name="page_id" value="{{ PAGE_ID }}" />
 			<input type="hidden" name="field_id" value="{{ FIELD_ID }}" />		
 			<div class="ui four columns stackable grid">	
-				<div class="column">	
+				<div class="column">
+					<div class="ui olive basic button" onclick="document.location.href='{{ ADMIN_URL }}/pages/modify.php?page_id={{ PAGE_ID }}';"><i class="icon level up"></i>{{ MOD_MPFORM.backend.BACK }}</div>				
 				</div>
 				<div class="column">			
 				</div>
