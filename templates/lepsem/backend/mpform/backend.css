@@ -11,3 +11,43 @@
  *
  */
 
+ h4.ui.header {
+        padding-left: 0px;
+}
+
+.helppage {
+padding: 20px;
+padding-top: 0px;
+
+}
+
+.helppage a {
+color:olive;
+}
+
+input.helppage  {
+border: 1px solid #666;
+border-radius: 5px;
+margin-top: 0px !important;
+padding: 10px;
+
+}
+
+.settings_table td, .settings_table textarea {
+padding: 10px;
+}
+
+small {
+    font-size: 80%;
+	line-height:20px;
+}
+
+button, select {
+    padding: 4px;
+}
+
+hr {
+    margin-top: 10px;
+}
+
+

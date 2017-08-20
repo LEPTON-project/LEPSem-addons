@@ -14,111 +14,111 @@
  #}
 {% autoescape false %}
 <!-- twig -->
-<div class="{{ MOD_CLASS }}">
+<div class="ui basic segment">
+	<div class="{{ MODULE_DIR }}">
 
-<form name="modify" action="{{ MOD_SAVE_URL }}" method="post" style="margin: 0;">
-	<input type="hidden" name="section_id" value="{{ SECTION_ID }}" />
-	<input type="hidden" name="page_id" value="{{ PAGE_ID }}" />
-	<fieldset>
-	<legend>{{ MOD_MPFORM.TXT_MP_SETTINGS }}</legend>
-	<table class="row_a" cellpadding="2" cellspacing="0" border="0" width="100%">
-	<tr title="{{ des_is_following }}">
-		<td class="setting_name">{{ MOD_MPFORM.TXT_ISFOLLOWING }}:</td>
-		<td class="setting_value">
-			<input type="radio" name="is_following" id="is_following_true" value="1" {{ is_following_true_checked }} />
-			<label for="is_following_true">{{ TXT_YES }}</label>
-			<input type="radio" name="is_following" id="is_following_false" value="0" {{ is_following_false_checked }} />
-			<label for="is_following_false">{{ TXT_NO }}</label>
-		</td>
-	</tr>
-	<tr>
-	    <td colspan="2"><small>{{ MOD_MPFORM.des_is_following }}</small><hr /></td>
-	</tr>
+		<form name="modify" action="{{ MOD_SAVE_URL }}" method="post" style="margin: 0;">
+		<input type="hidden" name="section_id" value="{{ SECTION_ID }}" />
+		<input type="hidden" name="page_id" value="{{ PAGE_ID }}" />
+		<div class="ui grey segment">
+			<h4 class="ui dividing header">{{ MOD_MPFORM.TXT_MP_SETTINGS }}</h4>
+			<table class="settings_table" cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr title="{{ des_is_following }}">
+					<td class="setting_name">{{ MOD_MPFORM.TXT_ISFOLLOWING }}:</td>
+					<td class="setting_value">
+						<input type="radio" name="is_following" id="is_following_true" value="1" {{ is_following_true_checked }} />
+						<label for="is_following_true">{{ TXT_YES }}</label>
+						<input type="radio" name="is_following" id="is_following_false" value="0" {{ is_following_false_checked }} />
+						<label for="is_following_false">{{ TXT_NO }}</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><small>{{ MOD_MPFORM.des_is_following }}</small><hr /></td>
+				</tr>
 	
-	<tr>
-		<td class="setting_name">{{ MOD_MPFORM.txt_success_page }}:</td>
-		<td>
-		<select name="success_page" class="setting_value">
-			<option value="none">{{ NONE }} keine</option>
-			<!-- BEGIN success_page_block -->
-{% macro build_option( page_list, deep ) %}
-	{% for page in page_list %}
-		<option value="{{ page.page_id }}" >{% if(deep > 0) %}{% for i in 1..(deep) %} - {% endfor %}{% endif %}{{ page.page_title }}</option>
+				<tr>
+					<td class="setting_name">{{ MOD_MPFORM.txt_success_page }}:</td>
+					<td>
+						<select name="success_page" class="setting_value">
+							<option value="none">{{ NONE }} keine</option>
+							<!-- BEGIN success_page_block -->
+						{% macro build_option( page_list, deep ) %}
+						{% for page in page_list %}
+							<option value="{{ page.page_id }}" >{% if(deep > 0) %}{% for i in 1..(deep) %} - {% endfor %}{% endif %}{{ page.page_title }}</option>
 
-		{% if (page.subpages|length > 0) %}
-			
-			{% import _self as sub_here %}	
-			{{ sub_here.build_option( page.subpages, (deep +1) ) }}
-			
-		{% endif %}
-			
-	{% endfor %}
-{% endmacro %}
-{% import _self as pages_ref %}	
-{{ pages_ref.build_option( all_pages, 0 ) }}
-			<!-- END success_page_block -->
-		</select>
-		</td>
-	</tr>
-	<tr>
-	    <td colspan="2"><small>{{ MOD_MPFORM.des_success_page }}</small><hr /></td>
-	</tr>
+							{% if (page.subpages|length > 0) %}
+				
+								{% import _self as sub_here %}	
+								{{ sub_here.build_option( page.subpages, (deep +1) ) }}
+				
+							{% endif %}
+				
+						{% endfor %}
+						{% endmacro %}
+						{% import _self as pages_ref %}	
+						{{ pages_ref.build_option( all_pages, 0 ) }}
+						<!-- END success_page_block -->
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><small>{{ MOD_MPFORM.des_success_page }}</small><hr /></td>
+				</tr>
 
-	<tr>
-		<td class="setting_name">{{ MOD_MPFORM.txt_success_text }}:</td>
-		<td class="setting_value"><textarea rows="5" cols="50" name="success_text" class="setting_value_textarea">{{ settings.success_text }}</textarea></td>
-	</tr>
-	<tr>
-	    <td colspan="2"><small>{{ MOD_MPFORM.des_success_text }}<br />{{ success_options }}</small><hr /></td>
-	</tr>
+				<tr>
+					<td class="setting_name">{{ MOD_MPFORM.txt_success_text }}:</td>
+					<td class="setting_value"><textarea rows="5" cols="50" name="success_text" class="setting_value_textarea">{{ settings.success_text }}</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><small>{{ MOD_MPFORM.des_success_text }}<br />{{ success_options }}</small><hr /></td>
+				</tr>
 
-	<tr>
-		<td class="setting_name">{{ MOD_MPFORM.txt_submissions_text }}:</td>
-		<td class="setting_value"><textarea rows="5" cols="50" name="submissions_text" class="setting_value_textarea">{{ settings.submissions_text }}</textarea></td>
-	</tr>
-	<tr>
-	    <td colspan="2"><small>{{ MOD_MPFORM.des_submissions_text }}<br />{{ success_options }}</small><hr /></td>
-	</tr>
+				<tr>
+					<td class="setting_name">{{ MOD_MPFORM.txt_submissions_text }}:</td>
+					<td class="setting_value"><textarea rows="5" cols="50" name="submissions_text" class="setting_value_textarea">{{ settings.submissions_text }}</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><small>{{ MOD_MPFORM.des_submissions_text }}<br />{{ success_options }}</small><hr /></td>
+				</tr>
 
-	<tr>
-		<td class="setting_name">{{ MOD_MPFORM.TXT_TBLSFX }}:</td>
-		<td class="setting_value"><input name="tbl_suffix" class="setting_value_text" type="text" maxlength="80" value="{{ settings.tbl_suffix }}" /></td>
-	</tr>
-	<tr>
-	    <td colspan="2"><small>{{ MOD_MPFORM.DES_TXT_TBLSFX }}</small></td>
-	</tr>
-	</table>
-	</fieldset>
-	
-	<fieldset>
-	<legend>Layout</legend>
-		<table class="row_a" cellpadding="2" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td class="setting_name">{{ MOD_MPFORM.TXT_TBLSFX }}:</td>
+					<td class="setting_value"><input name="tbl_suffix" class="setting_value_text" type="text" maxlength="80" value="{{ settings.tbl_suffix }}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><small>{{ MOD_MPFORM.DES_TXT_TBLSFX }}</small></td>
+				</tr>
+			</table>
+		</div>
+		<div class="spacer2"></div>
+		<div class="ui grey segment">
+			<h4 class="ui dividing header">Layout</h4>
+			<table class="settings_table" cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td class="setting_name">{{ txt_header }}:</td>
+					<td class="setting_value"><textarea rows="5" cols="50" name="header" class="setting_value_textarea">{{ settings.header }}</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><hr /></td>
+				</tr>
 
-	<tr>
-		<td class="setting_name">{{ txt_header }}:</td>
-		<td class="setting_value"><textarea rows="5" cols="50" name="header" class="setting_value_textarea">{{ settings.header }}</textarea></td>
-	</tr>
-	<tr>
-	    <td colspan="2"><hr /></td>
-	</tr>
+				<tr>
+					<td class="setting_name">{{ txt_field_loop }}:</td>
+					<td class="setting_value"><textarea rows="5" cols="50" name="field_loop" class="setting_value_textarea" title="{{ des_field_loop }}">{{ settings.field_loop }}</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><small>{{ MOD_MPFORM.des_field_loop }}</small><hr /></td>
+				</tr>
 
-	<tr>
-		<td class="setting_name">{{ txt_field_loop }}:</td>
-		<td class="setting_value"><textarea rows="5" cols="50" name="field_loop" class="setting_value_textarea" title="{{ des_field_loop }}">{{ settings.field_loop }}</textarea></td>
-	</tr>
-	<tr>
-	    <td colspan="2"><small>{{ MOD_MPFORM.des_field_loop }}</small><hr /></td>
-	</tr>
-
-	<tr>
-		<td class="setting_name">{{ txt_footer }}:</td>
-		<td class="setting_value"><textarea rows="5" cols="50" name="footer" class="setting_value_textarea" title="{{ des_footer }}">{{ settings.footer }}</textarea></td>
-	</tr>
-	<tr>
-	    <td colspan="2"><small>{{ MOD_MPFORM.des_footer }}</small></td>
-	</tr>
-	</table>
-	</fieldset>
+				<tr>
+					<td class="setting_name">{{ txt_footer }}:</td>
+					<td class="setting_value"><textarea rows="5" cols="50" name="footer" class="setting_value_textarea" title="{{ des_footer }}">{{ settings.footer }}</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><small>{{ MOD_MPFORM.des_footer }}</small></td>
+				</tr>
+			</table>
+		</div>
 
 	<fieldset>
 	<legend>{{ MOD_MPFORM.EMAIL_SETTINGS_1 }}</legend>

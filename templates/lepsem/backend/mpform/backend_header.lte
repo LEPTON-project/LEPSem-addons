@@ -1,0 +1,25 @@
+{#
+/**
+ *
+ * 
+ *  @module         MPForm
+ *  @author         Frank Heyne, Dietrich Roland Pehlke, erpe
+ *  @license        http://www.gnu.org/licenses/gpl.htm
+ *  @platform       see info.php of this addon
+ *  @license terms  see info.php of this addon
+ *  @version        see info.php of this module
+ *  
+ *
+ */
+ #}
+ 
+{# header only for help pages #}
+{% autoescape false %}
+<!-- twig -->
+<div class="ui basic segment">
+	<div class="{{ MOD_CLASS }}">
+		<h2 class="ui header">{{ MODULE_TITLE }}</h2>
+	</div>
+</div>
+<!-- end twig -->
+{% endautoescape %}
