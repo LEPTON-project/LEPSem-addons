@@ -37,13 +37,23 @@ padding: 10px;
 padding: 10px;
 }
 
+.settings_table textarea {
+    width: auto;
+}
+
+.settings_table input[type="text"] {
+	margin: 10px 0;
+    min-width: 46%;
+}
+
+.settings_table select {
+    min-width: 46%;
+    padding: 8px;
+}
+
 small {
     font-size: 80%;
 	line-height:20px;
-}
-
-button, select {
-    padding: 4px;
 }
 
 hr {

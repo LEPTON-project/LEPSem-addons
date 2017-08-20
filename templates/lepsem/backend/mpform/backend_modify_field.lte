@@ -56,7 +56,17 @@
 							<!-- END field_block -->
 						</select>
 					</div>
-				</div>				
+				</div>
+				<div class="spacer4"></div>	
+				<div class="column">
+					<div class="field field_options">
+						<!-- BEGIN type_options -->
+								{{ VAL_TYPE_OPTIONS }}
+						<!-- END type_options -->
+					</div>
+				</div>
+
+				
 			</div>	
 			<div class="spacer3"></div>
 		
