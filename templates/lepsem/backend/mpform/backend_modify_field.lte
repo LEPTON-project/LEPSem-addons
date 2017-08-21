@@ -59,14 +59,17 @@
 				</div>
 				<div class="spacer4"></div>	
 				<div class="column">
-					<div class="field field_options">
+					<div class="field_options">
 					<h4 class="ui dividing header">Details</h4>
 					<table class="options_table">
-<tbody>	<tr>					<!-- BEGIN type_options -->
+						<tbody>	
+							<tr>					
+							<!-- BEGIN type_options -->
 								{{ VAL_TYPE_OPTIONS }}
-						<!-- END type_options -->
-										</tr>	</tbody>	</table>
-
+							<!-- END type_options -->
+							</tr>
+						</tbody>
+					</table>
 					</div>
 				</div>
 
