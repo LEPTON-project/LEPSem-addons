@@ -217,16 +217,7 @@
 			</div>
 
 			<div class="spacer2"></div>		
-			<div class="ui three column stackable grid"> <!-- start submit -->														
-				<div class="column">							
-					<button class="right floated positive ui button lepsem_submit" type="submit" >{{ TEXT.SAVE }}</button>
-				</div>					
-				<div class="column">
-					<button class="negative ui button lepsem_submit" type="reset" name="reset" onclick="javascript:window.location = '{{ MOD_CANCEL_URL }}'; return false;">{{ TEXT.CANCEL }}</button>
-				</div>				
-				<div class="column">
-				</div>				
-			</div> <!-- end submit -->		
+			{% include "@mpform/submit_button.lte" %}			
 		</form>	
 	</div>
 </div>

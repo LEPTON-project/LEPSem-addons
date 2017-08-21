@@ -60,18 +60,20 @@
 				<div class="spacer4"></div>	
 				<div class="column">
 					<div class="field field_options">
-						<!-- BEGIN type_options -->
+					<h4 class="ui dividing header">Details</h4>
+					<table class="options_table">
+<tbody>	<tr>					<!-- BEGIN type_options -->
 								{{ VAL_TYPE_OPTIONS }}
 						<!-- END type_options -->
+										</tr>	</tbody>	</table>
+
 					</div>
 				</div>
 
 				
 			</div>	
 			<div class="spacer3"></div>
-		
-			{# include submit and cancel button from DEFAULT_THEME #}
-			{% include "@theme/submit_button.lte" %}
+			{% include "@mpform/submit_button.lte" %}
 		</form>			
 	</div>
 </div>
