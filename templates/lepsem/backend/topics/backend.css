@@ -39,16 +39,6 @@ iframe  {
 
 td.head   { line-height: 40px;}
 
-input[type="submit"] {
-	background:green;
-	color:#fff;
-}
-
-input[type="button"] {
-	background:red;
-	color:#fff;
-}
-
 .mod_moduledirectory_edit_css {float:right;}
 
 div.topic-modify {
@@ -127,7 +117,13 @@ a img {border:0;}
     margin-top: 10px;
     width: 100%;
 }
-.topiclist-maintable td  {vertical-align: top; border-bottom: 1px solid #dddddd;}
+
+.topiclist-maintable td {
+    border-bottom: 1px solid #dddddd;
+    padding: 7px;
+    vertical-align: middle;
+}
+
 .topiclist-maintable tr:hover td {
 	background-color: #99CCFF ! important;
 }
