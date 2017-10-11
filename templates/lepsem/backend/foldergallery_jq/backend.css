@@ -13,6 +13,19 @@
 body {
 	cursor : default;
 }
+
+#module {
+padding:20px;
+}
+
+input[type="submit"], input[type="button"] {
+	background: #eee;
+	cursor: pointer;
+	border: 1px solid #ccc;
+	margin: 5px;
+	border-radius: 5px;
+}
+
 .tooltip {
 	position: absolute;
 	display: none;
@@ -42,6 +55,15 @@ table.list {
 	width: 100%;
 }
 
+.cat_table tr {
+	line-height:30px;
+	background:#ccc !important
+}
+
+img.lepsem_fg {
+	padding-top:8px;
+}
+
 .cat_subelem {
 	display:none;
 }
@@ -63,6 +85,21 @@ ul li {
 li {
 	margin: 0;
 	padding: 0;
+}
+.settings tr {
+	line-height:30px;
+}
+
+.settings input {
+	margin-top:2px;
+	margin-bottom:2px;
+}
+
+.settings select {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	padding: 8px;
+	min-width: 150px;
 }
 
 #dragableTable {text-align:center;}
