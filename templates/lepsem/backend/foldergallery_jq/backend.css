@@ -18,6 +18,10 @@ body {
 padding:20px;
 }
 
+textarea {
+    padding: 6px;
+}
+
 input[type="submit"], input[type="button"] {
 	background: #eee;
 	cursor: pointer;
