@@ -1,0 +1,73 @@
+/**
+ *  @module         DirList
+ *  @version        see info.php of this module
+ *  @authors        Ralf Hertsch (†), cms-lab
+ *  @copyright      2007 - 2012 Ralf Hertsch (†)
+ *  @copyright      2013-2014 cms-lab 
+ *  @license        MIT License (MIT) http://www.opensource.org/licenses/MIT
+ *  @license terms  see info.php of this module
+ *
+ */
+
+.dirlist_error {
+	padding: 20px;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  background-color: #ffbf00;
+  font-weight: bold;
+	}
+
+.dirlist {
+    border: 1px solid #999;
+    color: #333;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 20px;
+	}
+.dirlist h1 {
+	text-align: left;
+  font-size: 12pt;
+	}
+.dirlist select,
+.dirlist textarea,
+.dirlist input {
+	width: 100%;
+	padding: 10px;
+	}
+.dirlist input[type=checkbox] {
+  width: 5%;
+  }
+.dl_txt,
+.dl_txt_area {
+	padding: 15px 0 5px 0;
+	}
+.dl_select {
+	padding: 20px;
+	color: #000000;
+	background-color: #eee;
+	}
+.dirlist_btn {
+	clear: both;
+	padding: 15px;
+	}
+.dirlist_btn input {
+	float: none;
+  width: 30%;
+  margin: 0 15px;
+  }
+  
+input.lepsem_submit {
+    background: #008000 none repeat scroll 0 0 !important;
+    color: #fff !important;
+	border: 1px transparent;
+    border-radius: 5px !important;
+	cursor:pointer;
+}
+
+input.lepsem_reset {
+    background: #d01919 none repeat scroll 0 0 !important;
+    color: #fff !important;
+	border: 1px transparent;
+    border-radius: 5px !important;
+	cursor:pointer;
+}  
