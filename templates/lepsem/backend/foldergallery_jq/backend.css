@@ -109,3 +109,12 @@ li {
 #dragableTable {text-align:center;}
 #dragableTable li {float:left; margin: 4px; }
 #dragableTable td {text-align:center; vertical-align: middle; background-color:#ddd; cursor:'move';}
+
+input.lepsem_submit, input.lepsem_reset, input.lepsem_save {
+	border: none !important;
+}
+
+input.lepsem_save {
+	padding-left: 20px;
+	padding-right: 20px;
+}
