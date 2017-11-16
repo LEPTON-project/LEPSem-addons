@@ -88,3 +88,7 @@ input.helppage  {
     min-width: 46%;
     padding: 8px;
 }
+
+input[type="submit"], input[type="reset"], input[type="button"] {
+    color: #fff;
+}
