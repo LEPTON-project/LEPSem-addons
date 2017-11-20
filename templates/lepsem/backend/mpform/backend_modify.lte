@@ -52,17 +52,24 @@
 			</div>			
 		</div>	
 
-		<div class="ui two columns stackable grid">	
+		<div class="ui four columns stackable grid">	
 			<div class="column">
 				<form class="ui form" action="{{ LEPTON_URL }}/modules/{{ MODULE_DIR }}/add_field.php" method="post">
 					<input type="hidden" name="section_id" value="{{ SECTION_ID }}" />
 					<input type="hidden" name="page_id" value="{{ PAGE_ID }}" />
-					<button class="ui grey basic button" type="submit"><i class="icon plus"></i>{{ TXT_FIELDS }}</button>
+					<button class="ui grey basic button" type="submit"><i class="olive icon plus"></i>{{ TXT_FIELDS }}</button>
 				</form>	
 			</div>
 			<div class="column">			
 			</div>
-			<div class="column">		
+			<div class="column">
+				<form class="ui form" action="{{ LEPTON_URL }}/modules/{{ MODULE_DIR }}/modify_submissions.php" method="post">
+					<input type="hidden" name="section_id" value="{{ SECTION_ID }}" />
+					<input type="hidden" name="page_id" value="{{ PAGE_ID }}" />
+					<button class="ui grey basic button" type="submit"><i class="red icon delete"></i>{{ txt_delete_submissions }}</button>
+				</form>	
+			</div>
+			<div class="column">			
 			</div>			
 		</div>
 		
@@ -95,10 +102,11 @@
 		</table>
 		
 		<div class="spacer3"></div>
-		<h4 class="ui dividing header">{{ TEXT_HEADING_S }}</h4>
+		<hr />
+		<h4 class="ui header">{{ TEXT_HEADING_S }}</h4>
 		<table class="ui celled padded striped table">
 		{% for submission in order_submissions %}
-					<tr bgcolor="{{ ROW_COLOR }}" onmouseover="this.style.backgroundColor = '#F1F8DD'" onmouseout="this.style.backgroundColor = '{{ ROW_COLOR }}'" style="border:white solid 2px; height:20px;">
+					<tr>					
 					<td class="single line">
 						<a href="{{ MODULE_URL }}/view_submission.php?page_id={{ PAGE_ID }}&amp;section_id={{ SECTION_ID }}&amp;submission_id={{ submission.SUBMISSION_ID }}">
 							<i class="large folder icon"></i>
@@ -110,11 +118,10 @@
 						<a href="javascript:confirm_link('{{ TEXT_ARE_YOU_SURE }}','{{ MODULE_URL }}/delete_submission.php?page_id={{ PAGE_ID }}&amp;section_id={{ SECTION_ID }}&amp;submission_id={{ submission.SUBMISSION_ID }}');" title="{{ TEXT_DELETE }}">
 							<i class="large red remove icon"></i>
 						</a>
-					</td>
+					</td>					
 				</tr>
-		{% endfor %}
-		</table>
-		
+		{% endfor %}	
+		</table>		
 	</div>		
 </div>
 <!-- end twig -->
