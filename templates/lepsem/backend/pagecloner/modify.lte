@@ -3,84 +3,78 @@
 	var IMAGE_URL = "{{ IMAGE_URL }}";
 </script>
 
-<p class="introtext">{{ MOD_PAGECLONER.INTRO_TEXT }}</p>
-
-
-	<table cellpadding="0" cellspacing="0" width="100%" border="0">
-	<tr>
-		<td>
-			<h2>{{ MOD_PAGECLONER.CHOOSE_PAGE }}</h2>
-		</td>
-		<td align="right">
-			{{ trash_page }}
-		</td>
-	</tr>
-	</table>
+<div class="ui grey segment">
+	<h3 class="ui header"> {{ module_name }} </h3>
+	<p class="introtext">{{ MOD_PAGECLONER.INTRO_TEXT }}</p>
+	<h4 class="ui header">{{ MOD_PAGECLONER.CHOOSE_PAGE }}:</h4>
+	
 
 <div class="pages_list">
-	<table class="pagecloner_pagelist head" >
-	<tr>
-		<td class="toggle">&nbsp;</td>
-		<td class="title">{{ TEXT.PAGE_TITLE }}:</td>
-		<td class="menu">{{ TEXT.MENU_TITLE }}:</td>
-		<td class="visi">{{ TEXT.VISIBILITY }}:</td>
-	</tr>
-	</table>
 
-{% macro display_page( pages, TEXT, MOD_PAGECLONER, IMAGE_URL, LEPTON_URL ) %}	
+	<table id="list" class="ui striped stackable table">
+		<thead>
+			<tr>
+				<th>&nbsp;</th>
+				<th>{{ TEXT.PAGE_TITLE }}:</th>
+				<th>{{ TEXT.MENU_TITLE }}:</th>
+				<th>{{ TEXT.VISIBILITY }}:</th>
+			</tr>
+		</thead>
+		<tbody>		
 
-		<ul id="p{{ pages[0].current_parent }}" {% if pages[0].current_parent != 0 %} class="pagelist" {% endif %}>
 
-		{% for page in pages %}
-			<li id="p{{ page.parent }}" style="padding: 2px 0px 2px 0px;">
-				<table class="pagecloner_pagelist">
-					<tr>
-						<!-- toggle-icon -->
-						<td class="toggle" style="padding-left: {{ (page.level * 20) }}px;">
-						{% if page.subpages|length > 0 %}
-						<a href="javascript: toggle_visibility('p{{ page.page_id }}');" title="{{ TEXT.EXPAND}}/{{ TEXT.COLLAPSE }}">
-							<img src="{{ IMAGE_URL }}/minus_16.png" onclick="toggle_plus_minus('{{ page.page_id }}');" name="plus_minus_{{ page.page_id }}" border="0" alt="+" />
-						</a>
-						{% endif %}
-						</td>
+			{% macro display_page( pages, MOD_PAGECLONER, IMAGE_URL, recursion_deep ) %}	
+
+				
+
+			{% for page in pages %}
+
+				<tr id="p{{ pages[0].parent }}" {% if pages[0].current_parent != 0 %} class="pagelist" {% endif %}>
+
+								<!-- toggle-icon -->
+								<td class="toggle" style="padding-left: {{ (page.level * 20) }}px;">
+								{% if page.subpages|length > 0 %}
+								<a href="javascript: toggle_visibility('p{{ page.page_id }}');" title="{{ TEXT.EXPAND}}/{{ TEXT.COLLAPSE }}">
+									<img src="{{ IMAGE_URL }}/minus_16.png" onclick="toggle_plus_minus('{{ page.page_id }}');" name="plus_minus_{{ page.page_id }}" border="0" alt="+" />
+								</a>
+								{% endif %}
+								</td>
+
+								<!-- page-title -->
+								<td class="title">
+									{% for i in 1..recursion_deep if recursion_deep > 0 %}- {% endfor %}<a href="{{ LEPTON_URL }}/modules/pagecloner/tool_clone.php?pagetoclone={{ page.page_id }}" title="{{ MOD_PAGECLONER.CLONE_PAGE }}">{{ page.page_title }}</a>
+								</td>
+
+								<!-- menu-title -->
+								<td class="menu">
+									<font color="#999999">{{ page.menu_title }}</font>
+								</td>
+
+								<!-- visibility -->
+								<td>
+									<img src="{{ IMAGE_URL }}/{{ page.status_icon }}" alt="{{ TEXT.VISIBILITY}}: {{ page.status_text }}" border="0" />
+								</td>
+
+					{% if page.subpages|length > 0 %}
+
+						{% import _self as page_ref %}
+						</tr><tr>
 						
-						<!-- page-title -->
-						<td class="title">
-							{% for i in 1..recursion_deep if recursion_deep > 0 %}- {% endfor %}<a href="{{ LEPTON_URL }}/modules/pagecloner/tool_clone.php?pagetoclone={{ page.page_id }}" title="{{ MOD_PAGECLONER.CLONE_PAGE }}">{{ page.page_title }}</a>
-						</td>
-						
-						<!-- menu-title -->
-						<td class="menu"">
-							<font color="#999999">{{ page.menu_title }}</font>
-						</td>
-						
-						<!-- visibility -->
+						{{ page_ref.display_page( page.subpages, MOD_PAGECLONER, IMAGE_URL, recursion_deep+1 ) }}
+</tr>
+					{% endif %}
 
-						<td align="center" valign="middle" width="130">
-							<img src="{{ IMAGE_URL }}/{{ page.status_icon }}" alt="{{ TEXT.VISIBILITY}}: {{ page.status_text }}" border="0" />
+						</tr>
 
-						</td>
-						
-					</tr>
-				</table>
-			</li>
-			{% if page.subpages != 0 %}
+				{% endfor %}
 
-				{% import _self as page_ref %}
+			{% endmacro %}
 
-				{{ page_ref.display_page( page.subpage, TEXT, MOD_PAGECLONER, IMAGE_URL, LEPTON_URL ) }}
-
-			{% endif %}
-
-		{% endfor %}
-		</ul>
-{% endmacro %}
-	
 		{% import _self as page_ref %}
-
-		{{ page_ref.display_page( editable_pages, TEXT, MOD_PAGECLONER, IMAGE_URL, LEPTON_URL ) }}
-
-
-</div>
-	
+		{{ page_ref.display_page( editable_pages, MOD_PAGECLONER, IMAGE_URL, 0 ) }}
+		
+		</tbody>	
+	</table>
+	</div>
+</div>	
 {% endautoescape %}
