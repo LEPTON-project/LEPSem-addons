@@ -13,40 +13,41 @@
         {% endif %}
     {% endfor %}
 {% endmacro %}
-
-<div class="ui header">
-    {{ MOD_PAGECLONER.CLONE_FROM }} "{{ source_page.page_title }}" [id: {{ source_page.page_id }}]
-</div>
-    
-<form class="ui form pagecloner" action="tool_doclone.php" method="post">
-    <input type="hidden" name="pagetoclone" value="{{ source_page.page_id }}"  />
-    <input type="hidden" name="leptoken" value="{{ leptoken }}" />
-    
-    <div class="field">
-        <label>{{ MOD_PAGECLONER.CLONE_TO }}</label>
-        <input type="text" name="title" value="{{ new_page_name }}" />
-    </div>    
-
-    <div class="field">
-        <label>{{ TEXT.PARENT }}:</label>
-        <select name="parent">
-            <option value="0" >None</option>
-            
-            {% import _self as build_ref %}
-            {{ build_ref.build_page_option( all_pages, source_page.page_id, 0) }}
-        
-        </select>
-    </div>
-
-    <div class="ui input labeled">
-        <label for="pagecloner_subs">{{ MOD_PAGECLONER.INCLUDE_SUBS }}: </label>
-        <input type="checkbox" id="pagecloner_subs" name="include_subs" value="1" />
-    </div>
-
-    <div class="ui element">
-        <input class="positive ui button lepsem_submit" type="submit" name="submit" value="{{ MOD_PAGECLONER.ADD }}" />
-        <input class="red ui button lepsem_cancel" type="button" name="cancel" value="{{ MOD_PAGECLONER.ABORT }}" onclick="document.location.href='{{ ADMIN_URL }}/admintools/tool.php?tool=pagecloner';" />		
-    </div>
-</form>
-    
+<div class="ui grey segment">
+	<h3 class="ui header"> {{ module_name }} </h3>
+	<h4 class="ui header">
+		{{ MOD_PAGECLONER.CLONE_FROM }} "{{ source_page.page_title }}" [id: {{ source_page.page_id }}]
+	</h4>
+		
+	<form class="ui form pagecloner" action="tool_doclone.php" method="post">
+		<input type="hidden" name="pagetoclone" value="{{ source_page.page_id }}"  />
+		<input type="hidden" name="leptoken" value="{{ leptoken }}" />
+		
+		<div class="field">
+			<label>{{ MOD_PAGECLONER.CLONE_TO }}</label>
+			<input type="text" name="title" value="{{ new_page_name }}" />
+		</div>    
+		<div class="spacer2"></div>
+		<div class="field">
+			<label>{{ TEXT.PARENT }}:</label>
+			<select name="parent">
+				<option value="0" >None</option>
+				
+				{% import _self as build_ref %}
+				{{ build_ref.build_page_option( all_pages, source_page.page_id, 0) }}
+			
+			</select>
+		</div>
+		<div class="spacer2"></div>
+		<div class="ui input labeled">
+			<label for="pagecloner_subs">{{ MOD_PAGECLONER.INCLUDE_SUBS }}: </label>
+			<input type="checkbox" id="pagecloner_subs" name="include_subs" value="1" />
+		</div>
+		<div class="spacer4"></div>
+		<div class="ui element">
+			<input class="positive ui button lepsem_submit" type="submit" name="submit" value="{{ MOD_PAGECLONER.ADD }}" />
+			<input class="red ui button lepsem_cancel" type="button" name="cancel" value="{{ MOD_PAGECLONER.ABORT }}" onclick="document.location.href='{{ ADMIN_URL }}/admintools/tool.php?tool=pagecloner';" />		
+		</div>
+	</form>
+</div>   
 {% endautoescape %}
