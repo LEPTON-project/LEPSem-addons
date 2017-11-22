@@ -29,25 +29,25 @@
 
 			{% for page in pages %}
 
-				<tr id="p{{ pages[0].parent }}" {% if pages[0].current_parent != 0 %} class="pagelist" {% endif %}>
+				<tr id="p{{ pages[0].parent }}" {% if pages[0].parent != 0 %} class="pagelist" style="display:none;" {% endif %}>
 
 								<!-- toggle-icon -->
 								<td class="toggle" style="padding-left: {{ (page.level * 20) }}px;">
 								{% if page.subpages|length > 0 %}
 								<a href="javascript: toggle_visibility('p{{ page.page_id }}');" title="{{ TEXT.EXPAND}}/{{ TEXT.COLLAPSE }}">
-									<img src="{{ IMAGE_URL }}/minus_16.png" onclick="toggle_plus_minus('{{ page.page_id }}');" name="plus_minus_{{ page.page_id }}" border="0" alt="+" />
+									<img src="{{ IMAGE_URL }}/plus_16.png" onclick="toggle_plus_minus('{{ page.page_id }}');" name="plus_minus_{{ page.page_id }}" border="0" alt="+" />
 								</a>
 								{% endif %}
 								</td>
 
 								<!-- page-title -->
 								<td class="title">
-									{% for i in 1..recursion_deep if recursion_deep > 0 %}- {% endfor %}<a href="{{ LEPTON_URL }}/modules/pagecloner/tool_clone.php?pagetoclone={{ page.page_id }}" title="{{ MOD_PAGECLONER.CLONE_PAGE }}">{{ page.page_title }}</a>
+									{% for i in 1..recursion_deep if recursion_deep > 0 %}- {% endfor %}<a href="#" onclick="call_detailpage({{ page.page_id }});" title="{{ MOD_PAGECLONER.CLONE_PAGE }}">{{ page.page_title }}</a>
 								</td>
 
 								<!-- menu-title -->
 								<td class="menu">
-									<font color="#999999">{{ page.menu_title }}</font>
+									{{ page.menu_title }}
 								</td>
 
 								<!-- visibility -->
@@ -58,10 +58,10 @@
 					{% if page.subpages|length > 0 %}
 
 						{% import _self as page_ref %}
-						</tr><tr>
+						</tr>
 						
 						{{ page_ref.display_page( page.subpages, MOD_PAGECLONER, IMAGE_URL, recursion_deep+1 ) }}
-</tr>
+
 					{% endif %}
 
 						</tr>
@@ -76,5 +76,12 @@
 		</tbody>	
 	</table>
 	</div>
+</div>
+
+<div class="hidden">
+    <form id="pagecloner_caller" method="post" action="{{ ADMIN_URL }}/admintools/tool.php?tool=pagecloner">
+        <input type="hidden" name="leptoken" value="{{ leptoken }}" />
+        <input type="hidden" name="pagecloner_job" value="display_details" />
+    </form>
 </div>	
 {% endautoescape %}
