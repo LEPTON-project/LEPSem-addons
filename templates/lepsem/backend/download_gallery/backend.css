@@ -14,7 +14,14 @@ button img { margin-right: 4px; margin-bottom: -2px; margin-left: 2px;  border: 
 i { font-size: 11px;  color:#47637F;}
 b { color:#2E3E4E;  margin-top: 30px;}
 tt  { color: #c06 }
-textarea     { color: #520000; font-family: monospace, Courier; background-color: #f8f8e1; padding: 3px }
+
+textarea     { 
+	color: #520000;
+	font-family: monospace, Courier;
+	background-color: #eee;
+	padding: 3px;
+	border: 1px solid #ccc;
+}
 
 /*
 --------------| Table Layout
