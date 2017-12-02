@@ -17,41 +17,42 @@
 <div class="ui basic segment">
 	<div class="{{ MODULE_DIR }}">
 		<form class="ui form" action="{{ MODULE_URL }}/delete_submissions.php" method="post">
-		<input type="hidden" name="section_id" value="{{ SECTION_ID }}" />
-		<input type="hidden" name="page_id" value="{{ PAGE_ID }}" />
-		<div class="ui grey segment">
-			<h4 class="ui header">{{ TEXT_HEADING_S }}</h4>
+			<input type="hidden" name="section_id" value="{{ SECTION_ID }}" />
+			<input type="hidden" name="page_id" value="{{ PAGE_ID }}" />
+			<div class="ui grey segment">
+				<h4 class="ui header">{{ TEXT_HEADING_S }}</h4>
 
-			<table class="ui celled padded striped table">
-			{% for submission in order_submissions %}
-						<tr>					
-						<td class="single line">
-							<a href="{{ MODULE_URL }}/view_submission.php?page_id={{ PAGE_ID }}&amp;section_id={{ SECTION_ID }}&amp;submission_id={{ submission.SUBMISSION_ID }}">
-								<i class="large folder icon"></i>
-							</a>
-						</td>
-						<td class="single line">{{ TEXT_SUBMISSION_ID }}: {{ submission.field_submission_id }}</td>
-						<td class="single line">{{ TEXT_SUBMITTED }}: {{ submission.field_submission_when }}</td>
-						<td class="single line">
-						<input type="checkbox" name="marked_submission[]" id="marked_submission_{{ submission.SUBMISSION_ID }}" value="{{ submission.SUBMISSION_ID }}" />
-						</td>					
-					</tr>
-			{% endfor %}	
-			</table>
-			<div class="ui stackable four column grid">
-				<div class="column">							
-					<button class="positive ui button lepsem_submit" type="submit" >{{ TEXT.DELETE }}</button>
+				<table class="ui celled padded striped table">
+				{% for submission in order_submissions %}
+				<tr>					
+					<td class="single line">
+						<a href="{{ MODULE_URL }}/view_submission.php?page_id={{ PAGE_ID }}&amp;section_id={{ SECTION_ID }}&amp;submission_id={{ submission.SUBMISSION_ID }}">
+							<i class="large folder icon"></i>
+						</a>
+					</td>
+					<td class="single line">{{ TEXT_SUBMISSION_ID }}: {{ submission.field_submission_id }}</td>
+					<td class="single line">{{ TEXT_SUBMITTED }}: {{ submission.field_submission_when }}</td>
+					<td class="single line">
+					<input type="checkbox" name="marked_submission[]" id="marked_submission_{{ submission.SUBMISSION_ID }}" value="{{ submission.SUBMISSION_ID }}" />
+					</td>					
+				</tr>
+				{% endfor %}	
+				</table>
+				<div class="ui stackable four column grid">
+					<div class="column">							
+						<button class="positive ui button lepsem_submit" type="submit" >{{ TEXT.DELETE }}</button>
+					</div>	
+					<div class="column">
+						<button class="negative ui button lepsem_submit" type="reset" name="reset" onclick="document.location.href='{{ ADMIN_URL }}/pages/modify.php?page_id={{ PAGE_ID }}';">{{ TEXT.CANCEL }}</button>
+					</div>	
+					<div class="column">
+					</div>					
+					<div class="right floated column">
+						<input style="margin-right:10px;vertical-align:baseline;" type="checkbox" name="checkall" id="checkall" />{{ MARKALL }}
+					</div>					
 				</div>	
-				<div class="column">
-					<button class="negative ui button lepsem_submit" type="reset" name="reset" onclick="document.location.href='{{ ADMIN_URL }}/pages/modify.php?page_id={{ PAGE_ID }}';">{{ TEXT.CANCEL }}</button>
-				</div>	
-				<div class="column">
-				</div>					
-				<div class="right floated column">
-					<input style="margin-right:10px;vertical-align:baseline;" type="checkbox" name="checkall" id="checkall" />{{ MARKALL }}
-				</div>					
-			</div>	
-		</div>			
+			</div>
+		</form>			
 	</div>		
 </div>
 <!-- end twig -->
