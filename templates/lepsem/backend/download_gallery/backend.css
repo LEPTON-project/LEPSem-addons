@@ -67,3 +67,7 @@ table.settings_table th {
 }
 
 hr {margin-bottom:20px;}
+
+input.module_edit_css {
+    background: silver none repeat scroll 0 0 !important;
+}
