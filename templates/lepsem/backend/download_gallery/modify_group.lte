@@ -1,0 +1,63 @@
+{#
+/**
+ *  @module			Download Gallery
+ *  @version		see info.php of this module
+ *  @authors		Hudge, Woudloper, M. Gallas, R. Smith, C. Sommer, F. Heyne, Aldus, erpe
+ *  @copyright		2010-2018 Hudge, Woudloper, M. Gallas, R. Smith, C. Sommer, F. Heyne, Aldus, erpe
+ *  @license		GNU General Public License
+ *  @license terms	see info.php of this module
+ *  @platform		see info.php of this module
+ *
+ */
+ #}
+{% autoescape false %}
+<div class="ui basic segment">
+	<form class="ui form" name="modify" action="{{ action_url }}" method="post">
+
+		<input type="hidden" name="section_id" value="{{ section_id }}" />
+		<input type="hidden" name="page_id" value="{{ page_id }}" />
+		<input type="hidden" name="group_id" value="{{ group_id }}" />
+		
+		<div class="ui grey segment">
+			<h3 class="ui header">{{ TEXT.MODIFY }}/{{ TEXT.ADD }} {{ TEXT.GROUP }}</h3>	
+			
+			<div class="spacer2"></div>
+			<div class="field">
+				<label>{{ TEXT.GROUP }}-{{ TEXT.TITLE }}:</label>
+				<input type="text" id="title" name="title" value="{{ title }}" />
+			</div>
+			
+			<div class="spacer2"></div>			
+			<div class="inline fields">
+				<label for="active">{{ TEXT.ACTIVE }}:</label>
+				<div class="field">
+					<div class="ui radio checkbox">
+						<input type="radio" name="active" id="active_true" value="1" {% if active == 1 %} checked="checked" {% endif %} />
+						<label for="active_true">{{ TEXT.YES }}</label>						
+					</div>
+				</div>
+				<div class="field">
+					<div class="ui radio checkbox">
+						<input type="radio" name="active" id="active_false" value="0" {% if active == 0 %} checked="checked" {% endif %} />
+						<label for="active_false">{{ TEXT.NO }}</label>	
+					</div>
+				</div>				
+			</div>			
+					
+			<div class="spacer2"></div>
+			<div class="ui stackable four column grid">
+				<div class="column">							
+					<button class="positive ui button lepsem_submit" name="save" type="submit">{{ TEXT.SAVE }}</button>
+				</div>	
+				<div class="column">
+				</div>				
+				<div class="column">
+					<button class="negative ui button lepsem_submit" type="reset" name="reset" onclick="javascript: window.location = '{{ admin_url }}/pages/modify.php?page_id={{ page_id }}';">{{ TEXT.CANCEL }}</button>
+				</div>						
+				<div class="column">
+				</div>					
+			</div>			
+		</div>
+	</form>
+</div>
+{% endautoescape %}

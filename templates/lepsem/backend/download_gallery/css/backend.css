@@ -10,6 +10,30 @@
  */
 
 
+div.download_gallery {
+    padding: 20px;
+}
+
+
+input.module_edit_css {
+    background: silver none repeat scroll 0 0 !important;
+}
+
+hr {margin-bottom:20px;}
+
+.modify_section {
+	margin-left	: 10px;
+	margin-top: 50px;
+}
+.modify_section h1 {
+	text-transform	: none;
+	text-align		: left;	
+	color			: white;
+}
+
+
+
+/*  ###################  obsolete?  ##########################  */
 button img { margin-right: 4px; margin-bottom: -2px; margin-left: 2px;  border: none; }
 i { font-size: 11px;  color:#47637F;}
 b { color:#2E3E4E;  margin-top: 30px;}
@@ -26,11 +50,6 @@ textarea     {
 /*
 --------------| Table Layout
 */
-div.download_gallery {
-    background-color: #fff;
-    margin: 10px;
-    padding: 20px;
-}
 
 .download_gallery table {
     border: 1px solid #ccc;
@@ -66,8 +85,3 @@ table.settings_table th {
     white-space: nowrap;
 }
 
-hr {margin-bottom:20px;}
-
-input.module_edit_css {
-    background: silver none repeat scroll 0 0 !important;
-}
