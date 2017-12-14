@@ -2,86 +2,22 @@
  *  @module			Download Gallery
  *  @version		see info.php of this module
  *  @authors		Hudge, Woudloper, M. Gallas, R. Smith, C. Sommer, F. Heyne, Aldus, erpe
- *  @copyright		2010-2017 Hudge, Woudloper, M. Gallas, R. Smith, C. Sommer, F. Heyne, Aldus, erpe
+ *  @copyright		2010-2018 Hudge, Woudloper, M. Gallas, R. Smith, C. Sommer, F. Heyne, Aldus, erpe
  *  @license		GNU General Public License
  *  @license terms	see info.php of this module
  *  @platform		see info.php of this module
  *
  */
 
-
-div.download_gallery {
-    padding: 20px;
-}
-
-
-input.module_edit_css {
-    background: silver none repeat scroll 0 0 !important;
-}
-
-hr {margin-bottom:20px;}
-
-.modify_section {
-	margin-left	: 10px;
-	margin-top: 50px;
-}
-.modify_section h1 {
-	text-transform	: none;
-	text-align		: left;	
-	color			: white;
-}
-
-
-
-/*  ###################  obsolete?  ##########################  */
-button img { margin-right: 4px; margin-bottom: -2px; margin-left: 2px;  border: none; }
-i { font-size: 11px;  color:#47637F;}
-b { color:#2E3E4E;  margin-top: 30px;}
-tt  { color: #c06 }
-
-textarea     { 
-	color: #520000;
-	font-family: monospace, Courier;
-	background-color: #eee;
-	padding: 3px;
-	border: 1px solid #ccc;
-}
-
-/*
---------------| Table Layout
-*/
-
-.download_gallery table {
-    border: 1px solid #ccc;
-    margin-top: 30px;
-}
-
-.ui.table thead {
-    background: #ccc none repeat scroll 0 0;
-    font-weight: bold;
-}
-
-table.settings_table {
-    padding: 20px;
-}
-
-caption.be_lepsem {
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
-table.settings_table td {
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
-table.settings_table select {
-	padding: 7px;
-}
-
-table.settings_table th {
-    padding-right: 20px;
-    text-align: left;
-    white-space: nowrap;
-}
-
+ .dg  {
+	padding:20px;
+ }
+ 
+ tr.spacer, td  {
+	border-top: 0px solid rgba(34,36,38,.1) !important;
+	background: none !important;
+ }
+ 
+  .modify_group  {
+	padding: 60px !important;
+ }

@@ -11,5 +11,122 @@
  */
  #}
 {% autoescape false %}
+<div class="dg">
+	<h2>{{ addon_name }}</h2>
+	<div class="ui stackable four column grid">
+		<div class="column"></div>
+		<div class="column"></div>
+		<div class="right aligned column">
+			<a href="{{ module_url }}/help.php?page_id={{ page_id }}&section_id={{ section_id }}">
+				<button class="ui basic button">
+					<i class="blue icon info circle"></i>
+					{{ MENU.HELP }}
+				</button>
+			</a>
+		</div>
+		<div class="column">
+			<a href= "{{ module_url }}/modify_settings.php?page_id={{ page_id }}&section_id={{ section_id }}">
+				<button class="ui basic button">
+					<i class="blue icon settings"></i>
+					{{ TEXT.SETTINGS }} & Layout
+				</button>
+			</a>
+		</div>
+	</div>
+	<h3>{{ MENU.GROUPS }} & {{ TEXT.SETTINGS }}</h3>
+	<p>
+	<button class="ui button" onclick="javascript: window.location = '{{ module_url }}/add_file.php?page_id={{ page_id }}&section_id={{ section_id }}">
+		<i class="green icon add"></i>{{ TEXT.ADD }} {{ TEXT.FILE }}
+	</button>
+	<button class="ui button" onclick="javascript: window.location = '{{ module_url }}/add_group.php?page_id={{ page_id }}&section_id={{ section_id }}">
+		<i class="green icon add"></i>{{ TEXT.ADD }} {{ TEXT.GROUP }}
+	</button>
+	</p>
+	<table id="dg_drag" width="100%" cellspacing="0" cellpadding="2" border="0" class="ui striped table dg_table">
+		<thead>
+			<tr style="height: 25px;">
+				<th>Pos.</th>
+				<th>Extension</th>		
+				<th><span title="fileID">{{ TEXT.FILE }}-{{ TEXT.NAME }}</th>
+				<th>{{ TEXT.FILE }}-ID</th>
+				<th>{{ TEXT.FILE }}-{{ TEXT.SIZE }}</th>
+				<th align="right">Downloads</th>
+				<th align="center">{{ TEXT.ACTIVE }}</th>
+				<th colspan="2">{{ TEXT.ACTIONS }}</th>
+				<th><div id="downloadGalleryResult"></div></th>
+			</tr>
+		</thead>
+		<tbody>
 
+		{% for group in addon.dg_groups %}
+			<tr class='dg_group_title'>
+				<td class='group_header' colspan='6'>
+					{% if group.group_id == 0 %}
+						<img src="{{ icons }}/empty.gif" alt="{{ TEXT.GROUP }}" title="{{ TEXT.GROUP }}" /><b> {{ group.title }}</b>
+					{% else %}
+						<i class="large icon cubes" alt="{{ TEXT.GROUP }}" title="{{ TEXT.GROUP }}"></i><b> {{ group.title }}</b>
+					{% endif %}
+				<td>
+					{% if group.active == 1 %}
+						<a href="{{ active_path }}?page_id={{ page_id }}&group_id={{ group.group_id }}&status=1"><i class="large green icon unhide" alt="active" title="active"></i></a>
+					{% elseif group.group_id == 0 %}
+						{# display no icon #}
+					{% else %}
+						<a href="{{ active_path }}?page_id={{ page_id }}&group_id={{ group.group_id }}&status=0"><i class="large red icon hide" alt="not active" title="not active"></i></a>
+					{% endif %}
+				</td>
+				{% if group.group_id == 0 %}
+					{# display no action  #}
+				{% else %}
+					<td><a href="{{ delete_group }}&group_id={{ group.group_id }}"><i class="large icon trash outline" alt="{{ TEXT.DELETE }}" title="{{ TEXT.DELETE }}"></i></a></td>
+					<td><a href='{{ group_path }}&group_id={{ group.group_id }}'><i class="large icon edit" alt="{{ TEXT.MODIFY }}" title="{{ TEXT.MODIFY }}"></i></a></td>
+					<td><a href="{{ add_file }}&group_id={{ file.group_id }}"><i class="large icon plus square outline" alt="{{ TEXT.ADD }}" title="{{ TEXT.ADD }}"></i></a></td>
+				{% endif %}				
+			</tr>
+			{% for file in addon.dg_files %}
+				{% if file.group_id == group.group_id %}
+				<tr>
+					<td>{{ file.position }}</td>
+					<td>{{ file.icon }} .{{ file.extension }}</td>	
+					<td><a href='{{ file_path }}&file_id={{ file.file_id }}&group_id={{ file.group_id }}'>{{ file.title }}</a></td>
+					<td>{{ file.file_id }}</td>
+					<td>{{ file.size }}</td>
+					<td>{{ file.dlcount }}</td>
+					<td>{% if file.active == 1 %}
+								<a href="{{ active_path }}?page_id={{ page_id }}&file_id={{ file.file_id }}&status=1"><i class="green icon unhide" alt="active" title="active"></i></a>
+						{% else %}
+								<a href="{{ active_path }}?page_id={{ page_id }}&file_id={{ file.file_id }}&status=0"><i class="red icon hide" alt=" not active" title="not active"></i></a>
+						{% endif %}
+					</td>
+					<td><a href="{{ delete_file }}&file_id={{ file.file_id }}"><i class="icon trash outline" alt="{{ TEXT.DELETE }}" title="{{ TEXT.DELETE }}"></i></a></td>
+					<td><a href='{{ file_path }}&file_id={{ file.file_id }}&group_id={{ file.group_id }}'><i class="icon edit" alt="{{ TEXT.MODIFY }}" title="{{ TEXT.MODIFY }}"></i></a></td>
+					<td></td>
+				</tr>
+				{% endif %}
+			{% endfor %}
+			<tr class='spacer'><td class='spacer'> <br /></td></tr>
+		{% endfor %}		
+		
+		</tbody>	
+		<tfoot>
+			<tr style="height:30px;">
+				<td colspan="11"><small>Number of groups: {{ addon.dg_groups|length }} | Number of files: {{ count_files }}</small></td>		
+			</tr>
+		</tfoot>
+	</table>
+	<div class='dg_page'></div>
+</div>
+
+<div> {# div avoids displaying code in output of semantic templates  #}
+<script>
+{# use simplePagination, see options on http://flaviusmatis.github.io/simplePagination.js/  #}
+$(function() {
+    $('.dg_page').pagination({
+        items: {{ items }},
+        itemsOnPage: {{ itemsOnPage }},
+        cssStyle: '{{ cssStyle }}'
+    });
+});
+</script>
+</div>
 {% endautoescape %}
