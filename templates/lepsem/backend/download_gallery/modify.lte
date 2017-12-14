@@ -78,7 +78,7 @@
 				{% if group.group_id == 0 %}
 					{# display no action  #}
 				{% else %}
-					<td><a href="{{ delete_group }}&group_id={{ group.group_id }}"><i class="large icon trash outline" alt="{{ TEXT.DELETE }}" title="{{ TEXT.DELETE }}"></i></a></td>
+					<td><a href="javascript: confirm_link('{{ TEXT.ARE_YOU_SURE }}','{{ delete_group }}&group_id={{ group.group_id }}&leptoken={{ leptoken }}');"><i class="large icon trash outline" alt="{{ TEXT.DELETE }}" title="{{ TEXT.DELETE }}"></i></a></td>
 					<td><a href='{{ group_path }}&group_id={{ group.group_id }}'><i class="large icon edit" alt="{{ TEXT.MODIFY }}" title="{{ TEXT.MODIFY }}"></i></a></td>
 					<td><a href="{{ add_file }}&group_id={{ file.group_id }}"><i class="large icon plus square outline" alt="{{ TEXT.ADD }}" title="{{ TEXT.ADD }}"></i></a></td>
 				{% endif %}				
@@ -98,7 +98,7 @@
 								<a href="{{ active_path }}?page_id={{ page_id }}&file_id={{ file.file_id }}&status=0"><i class="red icon hide" alt=" not active" title="not active"></i></a>
 						{% endif %}
 					</td>
-					<td><a href="{{ delete_file }}&file_id={{ file.file_id }}"><i class="icon trash outline" alt="{{ TEXT.DELETE }}" title="{{ TEXT.DELETE }}"></i></a></td>
+					<td><a href="javascript: confirm_link('{{ TEXT.ARE_YOU_SURE }}','{{ delete_file }}&file_id={{ file.file_id }}&leptoken={{ leptoken }}');"><i class="icon trash outline" alt="{{ TEXT.DELETE }}" title="{{ TEXT.DELETE }}"></i></a></td>
 					<td><a href='{{ file_path }}&file_id={{ file.file_id }}&group_id={{ file.group_id }}'><i class="icon edit" alt="{{ TEXT.MODIFY }}" title="{{ TEXT.MODIFY }}"></i></a></td>
 					<td></td>
 				</tr>
